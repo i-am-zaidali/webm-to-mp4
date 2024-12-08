@@ -33,7 +33,10 @@ convert_webm_to_mp4() {
 }
 
 file_is_webm() {
+    echo "Checking if file is a webm file"
+    echo "File: $1"
     file -b --mime-type "$1" | grep -q "video/webm"
+    return $?
 }
 
 if [ -f "$path" ]; then
@@ -59,8 +62,9 @@ while true; do
         # Check if the new file is a webm
         FILEPATH="$dir$filename"
         echo -e "New file detected\n${filename} detected in ${dir}"
+        echo -e "File path: $FILEPATH"
         notify-send "New file detected" "${filename} detected in ${dir}"
-        if file_is_webm $FILEPATH; then
+        if file_is_webm "$FILEPATH"; then
             echo -e "WEBM file found\n${filename} is a WEBM file. Attempting conversion"
             notify-send "WEBM file found" "${filename} is a WEBM file. Attempting conversion"
             convert_webm_to_mp4 "$FILEPATH"

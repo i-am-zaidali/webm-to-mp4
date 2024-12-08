@@ -1,6 +1,8 @@
 # webm-to-mp4
 A bash script that monitors a folder and automatically converts all new webm files to MP4 
 
+The sole reason this exists is because literally no place supports .webm format and ubuntu screen recording produces this format and I couldnt find a way to change the foramt natively.
+
 
 *Make sure you have ffmpeg and inotify-tools installed on your system. If not, you can install it by running the following command:*
     
